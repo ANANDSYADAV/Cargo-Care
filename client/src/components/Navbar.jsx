@@ -1,10 +1,11 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
+import { Link } from 'react-router-dom'
 
 const navigation = [
-    { name: 'Dashboard', href: '#', current: true },
-    { name: 'Past Statistics', href: '#', current: false },
-    { name: 'Shipments', href: '#', current: false },
+    { name: 'Dashboard', link: '/dashboard', current: true },
+    { name: 'Past Statistics', link: '/profile', current: false },
+    { name: 'Shipments', link: '/profile', current: false },
 ]
 
 function classNames(...classes) {
@@ -35,18 +36,30 @@ export default function Navbar() {
                         </div>
                         <div className="hidden sm:ml-6 sm:block">
                             <div className="flex space-x-4">
+
+                                {/* <Link to='/profile'
+                                    aria-current={false}
+                                    onClick={() => console.log('clicked')}
+                                    className={classNames('text-gray-300 hover:bg-gray-700 hover:text-white',
+                                        'rounded-md px-3 py-2 text-sm font-medium',
+                                    )}
+                                >
+                                    Profile
+                                </Link> */}
+
                                 {navigation.map((item) => (
-                                    <a
-                                        key={item.name}
-                                        href={item.href}
+                                    <div key={item.name}>
+                                        <Link to={item.link}
                                         aria-current={item.current ? 'page' : undefined}
+                                        onClick={() => console.log('clicked')}
                                         className={classNames(
                                             item.current ? 'bg-gray-900 text-white' : 'text-gray-300 hover:bg-gray-700 hover:text-white',
                                             'rounded-md px-3 py-2 text-sm font-medium',
                                         )}
                                     >
                                         {item.name}
-                                    </a>
+                                    </Link>
+                                    </div>
                                 ))}
                             </div>
                         </div>
@@ -68,8 +81,8 @@ export default function Navbar() {
                                     <span className="absolute -inset-1.5" />
                                     <span className="sr-only">Open user menu</span>
                                     <img
-                                        alt=""
-                                        src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80"
+                                        alt="img"
+                                        src="banner1.webp"
                                         className="h-8 w-8 rounded-full"
                                     />
                                 </MenuButton>
