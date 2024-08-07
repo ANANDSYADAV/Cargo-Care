@@ -1,6 +1,7 @@
 "use client";
 import { Button, Card } from 'flowbite-react'
 import HomeCard from '../components/HomeCard'
+import { useNavigate } from 'react-router-dom';
 
 const cardData = [
   { index: 1, banner: '/homeBanner2.webp', text: 'Transportation freshness by controlling cargo temperature', link: '#' },
@@ -8,6 +9,8 @@ const cardData = [
 ]
 
 function Home() {
+  const navigate = useNavigate();
+
   return (
     <div className='w-[90%] mx-auto mb-8'>
       <div className='mt-6 flex flex-col gap-5'>
@@ -27,7 +30,7 @@ function Home() {
         <p className="font-normal text-gray-700 dark:text-gray-400 w-[80%] mx-auto">
           Begin tracking your journey, automating it, and eliminating manual tasks
         </p>
-        <Button gradientDuoTone='pinkToOrange'>
+        <Button gradientDuoTone='pinkToOrange' onClick={() => navigate('journey')}>
           Start Journey
         </Button>
       </Card>

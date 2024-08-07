@@ -1,9 +1,11 @@
 import { Alert, Button, TextInput } from 'flowbite-react';
-import { useEffect, useRef, useState } from 'react';
+import { useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 
 function VehicleProfile() {
     const [imageFile, setImageFile] = useState(null);
     const [imageFileUrl, setImageFileUrl] = useState(null);
+    const navigate = useNavigate();
 
     const filePickerRef = useRef();
     const handleImageUpload = (e) => {
@@ -26,9 +28,9 @@ function VehicleProfile() {
                     />
                 </div>
                 <TextInput type='text' id='brand' placeholder='truck brand' />
-                <TextInput type='number' id='noPlate' placeholder='number plate' />
-                <TextInput type='regNumber' id='regNumber' placeholder='Registration Number' />
-                <Button type='submit' gradientDuoTone='purpleToBlue' outline>
+                <TextInput type='text' id='noPlate' placeholder='number plate' />
+                <TextInput type='text' id='regNumber' placeholder='Registration Number' />
+                <Button onClick={() => navigate('/')} gradientDuoTone='purpleToBlue' outline>
                     Update Details
                 </Button>
             </form>
