@@ -9,7 +9,7 @@ const cardData = [
 
 function Home() {
   return (
-    <div className='w-[80%] mx-auto'>
+    <div className='w-[90%] mx-auto mb-8'>
       <div className='mt-6 flex flex-col gap-5'>
         {
           cardData.map((card) => (
