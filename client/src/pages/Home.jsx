@@ -25,12 +25,24 @@ function Home() {
 
       <Card href="#" className="max-w-sm bg-pink-100 mt-8">
         <h5 className="text-2xl font-bold tracking-tight text-gray-900 text-center">
-          Start today's Journey
+          Track Your Last Journey
+        </h5>
+        <p className="font-normal text-gray-700 dark:text-gray-400 w-[80%] mx-auto">
+          Checkout details of your last journey
+        </p>
+        <Button gradientDuoTone='pinkToOrange' onClick={() => navigate('last_journey')}>
+          Start Journey
+        </Button>
+      </Card>
+      
+      <Card href="#" className="max-w-sm bg-pink-100 mt-8">
+        <h5 className="text-2xl font-bold tracking-tight text-gray-900 text-center">
+          Start Today's Journey
         </h5>
         <p className="font-normal text-gray-700 dark:text-gray-400 w-[80%] mx-auto">
           Begin tracking your journey, automating it, and eliminating manual tasks
         </p>
-        <Button gradientDuoTone='pinkToOrange' onClick={() => navigate('journey')}>
+        <Button gradientDuoTone='greenToBlue' onClick={() => navigate('start_journey')}>
           Start Journey
         </Button>
       </Card>

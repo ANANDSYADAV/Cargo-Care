@@ -6,7 +6,8 @@ import Signup from './pages/Signup'
 import DriverProfile from './pages/DriverProfile'
 import VehicleProfile from './pages/VehicleProfile'
 import Dashboard from './pages/Dashboard'
-import Journey from './pages/Journey'
+import LastJourney from './pages/LastJourney'
+import StartJourney from './pages/StartJourney'
 
 function App() {
   return (
@@ -18,7 +19,8 @@ function App() {
         <Route path='/driver-profile' element={<DriverProfile />} />
         <Route path='/vehicle-profile' element={<VehicleProfile />} />
         <Route path='/dashboard' element={<Dashboard />} />
-        <Route path='/journey' element={<Journey />} />
+        <Route path='/last_journey' element={<LastJourney />} />
+        <Route path='/start_journey' element={<StartJourney />} />
       </Routes>
       <Footer />
     </BrowserRouter>

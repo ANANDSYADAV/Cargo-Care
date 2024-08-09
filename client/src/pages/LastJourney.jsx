@@ -1,5 +1,5 @@
 "use client";
-import { Button, Timeline } from "flowbite-react";
+import { Timeline } from "flowbite-react";
 import { HiArrowNarrowRight } from "react-icons/hi";
 import { FaLocationDot } from "react-icons/fa6";
 
@@ -12,10 +12,10 @@ const pathData = [
     { index: 6, Time: '3PM', Location: 'Behat', Distance: 700, Temp: 24, realFeel: 24, cargoTemp: 12, recTemp: 12 },
 ];
 
-export default function Journey() {
+export default function LastJourney() {
     return (
         <div>
-            <div className="text-center mt-5 text-xl font-mono text-indigo-600 font-semibold border-y-2">Happy Journey</div>
+            <div className="text-center mt-5 text-xl font-mono text-indigo-600 font-semibold border-y-2">Last Journey Details</div>
             <Timeline className="w-[90%] mx-auto mt-8 font-semibold">
                 {
                     pathData.map((stop) => (
@@ -43,7 +43,6 @@ export default function Journey() {
                     ))
                 }
             </Timeline>
-            <div className="text-center mb-5 text-xl font-mono text-indigo-600 font-semibold border-y-2">Journey Finished</div>
         </div>
     );
 }
