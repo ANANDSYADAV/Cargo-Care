@@ -1,48 +1,43 @@
-import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react'
+import { Alert, Button, Label, Spinner, TextInput } from 'flowbite-react';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom';
 
 function Signup() {
     const [formData, setFormData] = useState({});
     const [errorMessage, setErrorMessage] = useState(null);
     const [loading, setLoading] = useState(false);
-    // const navigate = useNavigate();
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
-        e.preventDefault();
-        // setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
-    }
+        setFormData({ ...formData, [e.target.id]: e.target.value.trim() });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
-        // if (!formData.username || !formData.email || !formData.password) {
-        //   return setErrorMessage('Please fill out all the fields');
-        // }
-        // try {
-        //   setLoading(true);
-        //   setErrorMessage(null);
-        //   const res = await fetch('/api/auth/signup', {
-        //     method: 'POST',
-        //     headers: { 'Content-Type': 'application/json' },
-        //     body: JSON.stringify(formData),
-        //   });
-        //   const data = await res.json();
-        //   if (data.success === false) {
-        //     const errorMsg = data.message;
-        //     if (errorMsg.includes('username'))
-        //       setErrorMessage('Username already Exists | Try with some other username');
-        //     else {
-        //       setErrorMessage('Email already Exists | Login to your account');
-        //     }
-        //   }
-        //   setLoading(false);
-        //   if (res.ok) {
-        //     navigate('/login');
-        //   }
-        // } catch (error) {
-        //   setErrorMessage(error.message);
-        //   setLoading(false);
-        // }
-    }
+        if (!formData.username || !formData.email || !formData.password) {
+            return setErrorMessage('Please fill out all the fields');
+        }
+        try {
+            setLoading(true);
+            setErrorMessage(null);
+            const res = await fetch('http://localhost:3000/api/users/signup', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify(formData),
+            });
+            const data = await res.json();
+            if (data.success === false) {
+                setErrorMessage(data.message);
+            } else {
+                // Navigate to dashboard upon successful signup
+                navigate('/');
+            }
+            setLoading(false);
+        } catch (error) {
+            setErrorMessage('An error occurred');
+            setLoading(false);
+        }
+    };
 
     return (
         <div className='h-screen mt-20'>
@@ -52,16 +47,14 @@ function Signup() {
                     <div className='flex flex-col items-center'>
                         <span><img src="/logo.png" alt="logo.img" className='h-[130px] w-[250px]' /></span>
                         <p className='text-md mt-5 font-serif font-semibold'>
-                            Sign up with you email and password.
+                            Sign up with your email and password.
                         </p>
                     </div>
                 </div>
 
                 {/* Right */}
                 <div className='flex-1'>
-                    <form className='flex flex-col gap-4'
-                        onSubmit={handleSubmit}
-                    >
+                    <form className='flex flex-col gap-4' onSubmit={handleSubmit}>
                         <div>
                             <Label value='Your username' />
                             <TextInput
@@ -103,9 +96,9 @@ function Signup() {
                     </form>
                     <div className='flex gap-2 mt-5 text-sm'>
                         <span>Already have an account?</span>
-                        {/* <Link to='/login' className='text-blue-600'>
+                        <Link to='/login' className='text-blue-600'>
                             Log In
-                        </Link> */}
+                        </Link>
                     </div>
 
                     {
@@ -119,7 +112,7 @@ function Signup() {
                 </div>
             </div>
         </div>
-    )
+    );
 }
 
-export default Signup
+export default Signup;
