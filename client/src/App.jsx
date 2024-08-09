@@ -7,7 +7,7 @@ import DriverProfile from './pages/DriverProfile'
 import VehicleProfile from './pages/VehicleProfile'
 import Dashboard from './pages/Dashboard'
 import Journey from './pages/Journey'
-
+import Signin from './pages/Signin'
 function App() {
   return (
     <BrowserRouter>
@@ -19,6 +19,8 @@ function App() {
         <Route path='/vehicle-profile' element={<VehicleProfile />} />
         <Route path='/dashboard' element={<Dashboard />} />
         <Route path='/journey' element={<Journey />} />
+        <Route path='/signin' element={<Signin/>} />
+        
       </Routes>
       <Footer />
     </BrowserRouter>
